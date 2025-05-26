@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/debugging-exercises/static/css/main.2dacb2e5.css",
-    "main.js": "/debugging-exercises/static/js/main.166b2b4b.js",
-    "static/js/453.9d388d58.chunk.js": "/debugging-exercises/static/js/453.9d388d58.chunk.js",
-    "index.html": "/debugging-exercises/index.html",
-    "main.2dacb2e5.css.map": "/debugging-exercises/static/css/main.2dacb2e5.css.map",
-    "main.166b2b4b.js.map": "/debugging-exercises/static/js/main.166b2b4b.js.map",
-    "453.9d388d58.chunk.js.map": "/debugging-exercises/static/js/453.9d388d58.chunk.js.map"
+    "main.css": "/secure-coder/static/css/main.2dacb2e5.css",
+    "main.js": "/secure-coder/static/js/main.6f271044.js",
+    "static/js/453.9d388d58.chunk.js": "/secure-coder/static/js/453.9d388d58.chunk.js",
+    "index.html": "/secure-coder/index.html",
+    "main.2dacb2e5.css.map": "/secure-coder/static/css/main.2dacb2e5.css.map",
+    "main.6f271044.js.map": "/secure-coder/static/js/main.6f271044.js.map",
+    "453.9d388d58.chunk.js.map": "/secure-coder/static/js/453.9d388d58.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2dacb2e5.css",
-    "static/js/main.166b2b4b.js"
+    "static/js/main.6f271044.js"
   ]
 }
