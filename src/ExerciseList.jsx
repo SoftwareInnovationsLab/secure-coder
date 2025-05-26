@@ -29,7 +29,7 @@ function ExerciseList() {
                 <Col>
                     <p>
                         Welcome to {process.env.REACT_APP_TITLE}.
-                        This site is designed to provide you with small debugging exercises that focus on safety/security-related bugs.
+                        This site is designed to provide you with small programming exercises that focus on safety/security-related bugs and vulnerabilities.
                         The exercises are categorized according to the common weakness enumeration (CWE) that they train.
                         Additionally, each exercise is tagged as either <Badge bg="danger" pill>attack</Badge> or <Badge bg="primary" pill>defend</Badge>.
                         The attack exercises focus on crafting inputs that exploit or take advantage of the vulnerabilities whereas the defend ones aim to patch or eliminate the bugs.
