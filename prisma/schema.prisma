@@ -14,7 +14,7 @@ model Exercise {
   description     String
   driverCode      String
   vulnerableCode  String
-  input           String
+  input           String?
   solution        String
   hints           String[]
   explanation     String
