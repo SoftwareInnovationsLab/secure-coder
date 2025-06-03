@@ -6,7 +6,7 @@ import axios from "axios";
 import ReactMarkdown from 'react-markdown';
 
 import { useBreadcrumb } from "../context/BreadcrumbsContext";
-import { HintsAccordion } from "./Hints";
+// import { HintsAccordion } from "./Hints";
 
 type ExerciseFormData = {
     exerciseId: number;
@@ -90,7 +90,7 @@ export default function Exercise({ exerciseId }: ExerciseFormProps) {
     const [results, setResults] = useState<any>(null);
     const [tag, setTag] = useState("");
     const [type, setType] = useState("");
-    const [hints, setHints] = useState([]);
+    // const [hints, setHints] = useState([]);
 
     useEffect(() => {
         if (exerciseId) {
@@ -105,7 +105,7 @@ export default function Exercise({ exerciseId }: ExerciseFormProps) {
                     setInput(ex.input);
                     setTag(ex.tags[0]);
                     setType(ex.type);
-                    setHints(ex.hints);
+                    // setHints(ex.hints);
                 })
                 .catch((err) => {
                     console.error("Failed to load exercise:", err);
@@ -187,11 +187,11 @@ export default function Exercise({ exerciseId }: ExerciseFormProps) {
                     {results && (
                         <>
                             <div>
-                                {results.status?.description === 'Accepted'
-                                    ? <Alert type="success">Success! {results.stderr}</Alert>
-                                    : <Alert type="danger">Try again. {results.stderr}</Alert>}
+                                {results.status == 3
+                                    ? <Alert type="success">Success! {results.feedback}</Alert>
+                                    : <Alert type="danger">Try again. {results.feedback}</Alert>}
                             </div>
-                            {results.status?.description === 'Accepted' && (
+                            {results.status == 3 && (
                                 <>
                                     <br></br>
                                     <h2 className="text-2xl font-bold text-left">Explanation</h2>
@@ -204,10 +204,9 @@ export default function Exercise({ exerciseId }: ExerciseFormProps) {
                     )}
                 </section>
 
-                <section className="space-y-4">
+                {/* <section className="space-y-4">
                     <HintsAccordion hints={hints} />
-                </section>
-
+                </section>*/}
                 <div className="flex space-x-4">
                     <button
                         type="submit"

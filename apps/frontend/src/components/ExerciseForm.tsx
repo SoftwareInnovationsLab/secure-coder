@@ -1,10 +1,9 @@
 import { useForm } from "react-hook-form";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Editor from "@monaco-editor/react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import Title from "./Title";
 import { useBreadcrumb } from "../context/BreadcrumbsContext";
 
 type ExerciseFormData = {
@@ -157,9 +156,8 @@ export default function ExerciseForm({ exerciseId }: ExerciseFormProps) {
             vulnerableCode,
             solution,
             hints: data.hints
-                .split(",")
-                .map((hint) => hint.trim())
-                .filter(Boolean),
+                ? data.hints.split(",").map((hint) => hint.trim()).filter(Boolean)
+                : [],
             tags: data.tags
                 .split(",")
                 .map((tag) => tag.trim())
@@ -210,15 +208,13 @@ export default function ExerciseForm({ exerciseId }: ExerciseFormProps) {
         }
 
         try {
-            if (exerciseId) {
-                const res = await axios.post(
-                    `http://localhost:4000/api/exercises/validate`,
-                    payload
-                );
-                setValidateResults(res.data);
-                console.log(res.data);
-                alert("Exercise submitted for validation...");
-            }
+            const res = await axios.post(
+                `http://localhost:4000/api/exercises/validate`,
+                payload
+            );
+            setValidateResults(res.data);
+            console.log(res.data);
+            alert("Exercise submitted for validation...");
         } catch (error) {
             alert("Error saving exercise.");
             console.error(error);
@@ -325,20 +321,20 @@ export default function ExerciseForm({ exerciseId }: ExerciseFormProps) {
 
                         <div>
                             <span className="font-medium text-gray-700">Status:</span>{" "}
-                            <span className="text-blue-700">{getDescription(validateResults.status?.id)}</span>
+                            <span className="text-blue-700">{getDescription(validateResults.status)}</span>
                         </div>
 
                         <div>
                             <span className="font-medium text-gray-700">Feedback (<code>stderr</code>):</span>
                             <pre className="mt-1 bg-gray-100 text-red-600 p-2 rounded text-sm overflow-x-auto whitespace-pre-wrap">
-                                {validateResults.stderr || "No error output."}
+                                {validateResults.feedback || "No feedback."}
                             </pre>
                         </div>
 
                         <div>
                             <span className="font-medium text-gray-700">Compilation Output:</span>
                             <pre className="mt-1 bg-gray-100 text-gray-800 p-2 rounded text-sm overflow-x-auto whitespace-pre-wrap">
-                                {atob(validateResults.compile_output || "") || "No compilation output."}
+                                {validateResults.compile_output || "No compilation output."}
                             </pre>
                         </div>
                     </div>
