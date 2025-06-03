@@ -172,12 +172,9 @@ export default function ExerciseForm({ exerciseId }: ExerciseFormProps) {
                 );
                 alert("Exercise updated!");
             } else {
-                await axios.post("http://localhost:4000/api/exercises", payload);
+                const response = await axios.post("http://localhost:4000/api/exercises", payload);
                 alert("Exercise created!");
-                reset();
-                setDriverCode("// starter/driver code");
-                setVulnerableCode("// vulnerable code");
-                setSolution("// solution code");
+                navigate(`/exercises/${response.data.id}/edit`);
             }
         } catch (error) {
             alert("Error saving exercise.");
